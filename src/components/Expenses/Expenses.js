@@ -1,6 +1,7 @@
 import ExpenseItem from "./ExpenseItem";
 import "./Expenses.css";
-const expenses = function Expenses(props) {
+
+const expenses = (props) => {
   var expData = props.expensesData;
   let expensesArray = [];
 
