@@ -1,21 +1,35 @@
+import { useState } from "react";
 import ExpenseItem from "./ExpenseItem";
+import ExpensesFilter from "./ExpensesFilter";
 import "./Expenses.css";
 
-const expenses = (props) => {
+const Expenses = (props) => {
   var expData = props.expensesData;
   let expensesArray = [];
+  const [year, setYear] = useState("");
+
+  const filterFunction = (year) => {
+    setYear(year);
+  };
 
   for (let i = 0; i < expData.length; i++) {
-    expensesArray.push(
-      <ExpenseItem
-        key={expData[i].id}
-        item={expData[i]["title"]}
-        price={expData[i]["amount"]}
-        date={expData[i]["date"]}
-      />
-    );
+    if (expData[i]["date"].getFullYear() == year || year === "") {
+      expensesArray.push(
+        <ExpenseItem
+          key={expData[i].id}
+          item={expData[i]["item"]}
+          price={expData[i]["price"]}
+          date={expData[i]["date"]}
+        />
+      );
+    }
   }
-  return <div className="expenses"> {expensesArray}</div>;
+  return (
+    <div className="expenses">
+      <ExpensesFilter onFiltered={filterFunction} />
+      <div>{expensesArray}</div>
+    </div>
+  );
 };
 
-export default expenses;
+export default Expenses;

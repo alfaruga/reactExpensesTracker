@@ -1,7 +1,7 @@
 import "./ExpenseForm.css";
 import { useState } from "react";
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   const [date, setDate] = useState(new Date());
   const [item, setItem] = useState("");
   const [price, setPrice] = useState("");
@@ -18,11 +18,11 @@ const ExpenseForm = () => {
 const submitHandler = (event)=>{
   event.preventDefault();
   const expenseDataExport = {
-    exportDate: new Date(date),
-    exportItem: item,
-    exportPrice: price
+    "date": new Date(date),
+    "item": item,
+    "price": price
   }
-  console.log(expenseDataExport)
+  props.onSaveExpenseData(expenseDataExport);
   setDate("");
   setItem("");
   setPrice("")
@@ -36,7 +36,7 @@ const submitHandler = (event)=>{
             onChange={dateChangeHandler}
             value={date}
             type="date"
-            min="2020-01-01"
+            min="2019-01-01"
             max="2023-12-31"
             id="date"
             name="date"

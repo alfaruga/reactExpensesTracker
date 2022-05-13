@@ -18,15 +18,21 @@
 }
 
 .expense-form_entry {
-    font-size: 1.2rem;
+  font-size: 1.2rem;
+  width: 30%;
   display: flex;
   flex-direction: column;
-align-items: flex-start;
+  align-items: flex-start;
   margin: 1rem 0;
 }
 
 .expense-form_entry input {
   border-radius: 5px;
+  width:90%;
+}
+.expense-form_entry label{
+  width:90%;
+
 }
 .expense-form_button {
   width: 100%;
@@ -50,5 +56,4 @@ align-items: flex-start;
 
 .expense-form_button button:active {
   transform: scale(0.9);
-
 }

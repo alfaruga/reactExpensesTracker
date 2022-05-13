@@ -1,33 +1,40 @@
 import "./App.css";
+import { useState } from "react";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
 
 const App = () => {
-  const expenses = [
+  const [expenses, setExpenses] = useState([
     {
       id: "e1",
-      title: "Toilet Paper",
-      amount: 94.12,
+      item: "Toilet Paper",
+      price: 94.12,
       date: new Date(2020, 7, 14),
     },
-    { id: "e2", title: "New TV", amount: 799.49, date: new Date(2021, 2, 12) },
+    { id: "e2", item: "New TV", price: 799.49, date: new Date(2021, 2, 12) },
     {
       id: "e3",
-      title: "Car Insurance",
-      amount: 294.67,
+      item: "Car Insurance",
+      price: 294.67,
       date: new Date(2021, 2, 28),
     },
     {
       id: "e4",
-      title: "New Desk (Wooden)",
-      amount: 450,
+      item: "New Desk (Wooden)",
+      price: 450,
       date: new Date(2021, 5, 12),
     },
-  ];
+  ]);
+
+  const addingItemHandler = (expenseDataExport) => {
+    console.log("Hello from [App] componenet");
+    setExpenses((previousState)=>([...previousState, expenseDataExport]
+    ));
+  };
   return (
     <div className="App">
-      <NewExpense />
-      <Expenses expensesData={expenses} />
+      <NewExpense id="NewExpense" onAddingNewItem={addingItemHandler} />
+      <Expenses id="Expenses" expensesData={expenses} />
     </div>
   );
 };

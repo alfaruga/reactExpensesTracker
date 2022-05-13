@@ -2,9 +2,10 @@
   font-weight: 800;
   padding: 0.5rem;
   color: white;
-  width: 10vw;
+  width: 15%;
   background-color: rgb(240, 190, 98);
   border-radius: 12px;
+  overflow: hidden;
 }
 
 .expense-date_month {
