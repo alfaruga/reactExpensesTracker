@@ -15,18 +15,18 @@ const ExpenseForm = (props) => {
   const priceChangeHandler = (event) => {
     setPrice(event.target.value);
   };
-const submitHandler = (event)=>{
-  event.preventDefault();
-  const expenseDataExport = {
-    "date": new Date(date),
-    "item": item,
-    "price": price
-  }
-  props.onSaveExpenseData(expenseDataExport);
-  setDate("");
-  setItem("");
-  setPrice("")
-}
+  const submitHandler = (event) => {
+    event.preventDefault();
+    const expenseDataExport = {
+      item: item,
+      price: price,
+      date: new Date(date),
+    };
+    props.onSaveExpenseData(expenseDataExport);
+    setDate("");
+    setItem("");
+    setPrice("");
+  };
   return (
     <form className="expense-form_form" onSubmit={submitHandler}>
       <div className="expense-form_input">

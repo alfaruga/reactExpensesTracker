@@ -5,10 +5,10 @@ import ExpenseForm from "./ExpenseForm";
 const NewExpense = (props) => {
   const saveExpenseDataHandler = (expenseDataExport) => {
     const expenseData = {
-      ...expenseDataExport,
       id: Math.random(),
+      ...expenseDataExport,
     };
-    props.onAddingNewItem(expenseDataExport);
+    props.onAddingNewItem(expenseData);
     console.log(`Hello from [NewExpenses] componenet ${JSON.stringify(expenseData)}`);
   };
 

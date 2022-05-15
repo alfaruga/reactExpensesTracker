@@ -5,25 +5,29 @@ import "./Expenses.css";
 
 const Expenses = (props) => {
   var expData = props.expensesData;
-  let expensesArray = [];
-  const [year, setYear] = useState("");
+
+  const [year, setYear] = useState(NaN);
 
   const filterFunction = (year) => {
-    setYear(year);
+    setYear(parseInt(year));
   };
+ 
 
-  for (let i = 0; i < expData.length; i++) {
-    if (expData[i]["date"].getFullYear() == year || year === "") {
-      expensesArray.push(
+  const displayItemsConditionalyFunction = function (item) {
+    if (isNaN(year) || item["date"].getFullYear() === year) {
+      return (
         <ExpenseItem
-          key={expData[i].id}
-          item={expData[i]["item"]}
-          price={expData[i]["price"]}
-          date={expData[i]["date"]}
+          key={item["id"]}
+          id={item["id"]}
+          item={item["item"]}
+          price={item["price"]}
+          date={item["date"]}
         />
       );
     }
-  }
+  };
+  let expensesArray = expData.map(displayItemsConditionalyFunction);
+
   return (
     <div className="expenses">
       <ExpensesFilter onFiltered={filterFunction} />

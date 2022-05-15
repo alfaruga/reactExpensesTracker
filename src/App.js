@@ -4,7 +4,7 @@ import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
 
 const App = () => {
-  const [expenses, setExpenses] = useState([
+  const placeHolder = [
     {
       id: "e1",
       item: "Toilet Paper",
@@ -24,17 +24,23 @@ const App = () => {
       price: 450,
       date: new Date(2021, 5, 12),
     },
-  ]);
+  ];
+  const [expenses, setExpenses] = useState(placeHolder);
+
+  
 
   const addingItemHandler = (expenseDataExport) => {
     console.log("Hello from [App] componenet");
-    setExpenses((previousState)=>([...previousState, expenseDataExport]
-    ));
+    setExpenses((previousState) => [expenseDataExport, ...previousState]);
   };
   return (
     <div className="App">
       <NewExpense id="NewExpense" onAddingNewItem={addingItemHandler} />
-      <Expenses id="Expenses" expensesData={expenses} />
+      <Expenses
+        id="Expenses"
+        expensesData={expenses}
+        
+      />
     </div>
   );
 };
