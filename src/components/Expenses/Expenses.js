@@ -11,11 +11,16 @@ const Expenses = (props) => {
   const filterFunction = (year) => {
     setYear(parseInt(year));
   };
- 
 
-  const displayItemsConditionalyFunction = function (item) {
-    if (isNaN(year) || item["date"].getFullYear() === year) {
-      return (
+  const filterByYear = function (item) {
+    return isNaN(year) || item["date"].getFullYear() === year;
+  };
+  let expensesContent = <p>No expenses found</p>;
+
+  if (expData.filter(filterByYear).length > 0) {
+    expensesContent = expData
+      .filter(filterByYear)
+      .map((item) => (
         <ExpenseItem
           key={item["id"]}
           id={item["id"]}
@@ -23,15 +28,12 @@ const Expenses = (props) => {
           price={item["price"]}
           date={item["date"]}
         />
-      );
-    }
-  };
-  let expensesArray = expData.map(displayItemsConditionalyFunction);
-
+      ));
+  }
   return (
     <div className="expenses">
       <ExpensesFilter onFiltered={filterFunction} />
-      <div>{expensesArray}</div>
+      <div>{expensesContent}</div>
     </div>
   );
 };
