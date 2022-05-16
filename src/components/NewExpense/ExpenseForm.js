@@ -15,18 +15,23 @@ const ExpenseForm = (props) => {
   const priceChangeHandler = (event) => {
     setPrice(event.target.value);
   };
+
   const submitHandler = (event) => {
     event.preventDefault();
+    props.show();
+
     const expenseDataExport = {
       item: item,
       price: price,
       date: new Date(date),
     };
+
     props.onSaveExpenseData(expenseDataExport);
     setDate("");
     setItem("");
     setPrice("");
   };
+
   return (
     <form className="expense-form_form" onSubmit={submitHandler}>
       <div className="expense-form_input">
@@ -70,7 +75,10 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className="expense-form_button">
-        <button type="submit">Add item</button>
+        <button type="submit" >Add item</button>
+        <button onClick={props.show} type="button">
+          cancel
+        </button>
       </div>
     </form>
   );

@@ -1,3 +1,21 @@
+.expense-form_button button {
+  color: white;
+  text-shadow: 1px 1px 2px black;
+  border: solid 0.5px whitesmoke;
+  border-radius: 5px;
+  font-weight: 800;
+  background-color: gold;
+  margin: 0 0.5%;
+
+}
+.expense-form_button button:hover {
+  background-color: #5500ffd3;
+}
+
+.expense-form_button button:active {
+  transform: scale(0.9);
+}
+
 .expense-form_form {
   width: 50vw;
   align-self: center;
@@ -41,19 +59,16 @@
   justify-content: flex-end;
   padding: 0 5% 2% 0;
 }
+.expense-form_add{
+  justify-content: center;
+  padding: 5% 0;
 
-.expense-form_button button {
-  color: white;
-  text-shadow: 1px 1px 2px black;
-  border: solid 0.5px whitesmoke;
-  border-radius: 5px;
-  font-weight: 800;
-  background-color: gold;
 }
-.expense-form_button button:hover {
-  background-color: #5500ffd3;
+.expense-form_add button{
+  font-size: 1.8rem;
 }
+.expense-form_add button:hover{
+  font-size: 1.8rem;
+  background-color: goldenrod;
 
-.expense-form_button button:active {
-  transform: scale(0.9);
 }

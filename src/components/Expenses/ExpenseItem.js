@@ -9,6 +9,7 @@ console.log("Button Of ExpenseItem fixed")
   };
 
   return (
+    <li>
     <Card className="expense-item">
       <ExpenseDate date={props.date} />
 
@@ -20,6 +21,7 @@ console.log("Button Of ExpenseItem fixed")
         Change item
       </button>
     </Card>
+    </li>
   );
 };
 
